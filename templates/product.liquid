@@ -21,9 +21,27 @@
       {% endif %}
     {% endfor %}
   </select>
+    <p class="line-item-property__field">
+        <label for="your-name">Cart Index</label>
+        <input id="your-name" type="text" name="properties[cart_index]">
+    </p>
+    <p class="line-item-property__field">
+        <label for="your-name">在庫</label>
+        <input id="your-name" type="text" name="properties[cart_index]" value="{{ product.variants.first.inventory_quantity }}">
+    </p>
+    <p class="line-item-property__field">
+        <label for="your-name">カートの商品の数</label>
+        <input id="your-name" type="text" name="properties[cart_index]" value="{{ cart.item_count }}">
+    </p>
   {{ current_variant.price | money }}
   <label for="Quantity">quantity</label>
-  <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  <button type="submit" name="add" id="AddToCart">Add to cart</button>
+    {%- assign result = product.variants.first.inventory_quantity | minus : cart.item_count -%}
+    {% if result > 0 %}
+  <input type="number" id="Quantity" name="quantity" value="1" min="1" max="{{ result }}">
+  <button type="submit" name="add" id="AddToCart" class="add-cart-btn">Add to cart</button>
+    {% else %}
+  <input type="number" id="Quantity" name="quantity" value="0" value="0" disabled>
+  <button type="submit" name="add" id="AddToCart" disabled>Add to cart</button>
+    {% endif %}
 </form>
 <div>{{ product.description }}</div>
