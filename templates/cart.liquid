@@ -36,7 +36,9 @@
     </table>
     <div>
       <input id="order-memo-check" type="checkbox" name="instructions" onchange="changeOrderMemo();">Add instructions</input>
+      <div>
       <textarea  name="note" id="order-memo" class="order-memo" placeholder="order-memo"></textarea>
+      </div>
     </div>
     <div>
       <p>sub total : {{ cart.total_price | money }}</p>

@@ -1,0 +1,38 @@
+<div id="textsection">
+  <div class="simpletext">
+    <h1> {{ section.settings.Title }} </h1>
+    <h3> {{ section.settings.Description }} </h3>
+    <div>{{ section.settings.Featured }}</div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "Text Box",
+"settings": [
+{
+"id": "Title",
+"type": "text",
+"label": "Heading",
+"default": "Title Area"
+},
+{
+"id": "Description",
+"type": "textarea",
+"label": "Add custom text below",
+"default": "<p>Description Area</p>"
+},
+{
+"id": "Featured",
+"type": "checkbox",
+"label": "Add custom text below",
+"default": false
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
